@@ -7,10 +7,10 @@ const todos = require('./routes/todos');
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-// Connect to MongoDB Atlas
+// Connect to MongoDB
 connectDB();
 
-// ✅ Allow only your Netlify frontend
+// ✅ CORS for Netlify
 app.use(cors({
   origin: "https://boisterous-sunshine-b30dc1.netlify.app",
   methods: ["GET", "POST", "PATCH", "DELETE"],
@@ -23,7 +23,9 @@ app.use(express.json());
 // Routes
 app.use('/api/todos', todos);
 
-// Start server
-app.listen(PORT, () => 
-  console.log(`🚀 Server running on http://localhost:${PORT}`)
-);
+// Root test route
+app.get("/", (req, res) => {
+  res.send("Backend is running ✅");
+});
+
+app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));
