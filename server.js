@@ -10,9 +10,9 @@ const PORT = process.env.PORT || 5000;
 // Connect to MongoDB Atlas
 connectDB();
 
-// ✅ CORS Setup — Allow Netlify frontend to access backend
+// ✅ Allow only your Netlify frontend
 app.use(cors({
-  origin: "*", // Change to your Netlify URL after frontend deployment
+  origin: "https://boisterous-sunshine-b30dc1.netlify.app",
   methods: ["GET", "POST", "PATCH", "DELETE"],
   allowedHeaders: ["Content-Type"]
 }));
